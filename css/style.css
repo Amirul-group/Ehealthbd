@@ -135,7 +135,7 @@
    box-shadow: var(--box-shadow);
    text-align: center;
    width: 400px;
-
+   border-radius: 5px;
 }
 
 .container .profile img{
