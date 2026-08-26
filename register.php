@@ -5,7 +5,10 @@ include 'config.php';
 if(isset($_POST['submit'])){
 
    $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+   $blood_group = mysqli_real_escape_string($conn, $_POST['blood_group']);
+   $number = mysqli_real_escape_string($conn, $_POST['number']);
+   $nid_number = mysqli_real_escape_string($conn, $_POST['nid_number']);
    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
    $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
    $image = $_FILES['image']['name'];
@@ -13,7 +16,7 @@ if(isset($_POST['submit'])){
    $image_tmp_name = $_FILES['image']['tmp_name'];
    $image_folder = 'uploaded_img/'.$image;
 
-   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE number = '$number' AND password = '$pass'") or die('query failed');
 
    if(mysqli_num_rows($select) > 0){
       $message[] = 'user already exist'; 
@@ -23,7 +26,7 @@ if(isset($_POST['submit'])){
       }elseif($image_size > 2000000){
          $message[] = 'image size is too large!';
       }else{
-         $insert = mysqli_query($conn, "INSERT INTO `user_form`(name, email, password, image) VALUES('$name', '$email', '$pass', '$image')") or die('query failed');
+         $insert = mysqli_query($conn, "INSERT INTO `user_form`(name, number, password, image) VALUES('$name', '$number', '$pass', '$image')") or die('query failed');
 
          if($insert){
             move_uploaded_file($image_tmp_name, $image_folder);
@@ -65,7 +68,10 @@ if(isset($_POST['submit'])){
       }
       ?>
       <input type="text" name="name" placeholder="enter username" class="box" required>
-      <input type="email" name="email" placeholder="enter email" class="box" required>
+      <input type="date" name="dob" placeholder="enter date of birth" class="box" required>
+      <input type="text" name="blood_group" placeholder="enter blood group" class="box" required>
+      <input type="number" name="number" placeholder="enter number" class="box" required>
+      <input type="number" name="nid_number" placeholder="enter nid number" class="box" required>
       <input type="password" name="password" placeholder="enter password" class="box" required>
       <input type="password" name="cpassword" placeholder="confirm password" class="box" required>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
