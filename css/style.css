@@ -135,13 +135,13 @@
    box-shadow: var(--box-shadow);
    text-align: center;
    width: 400px;
-   border-radius: 5px;
+
 }
 
 .container .profile img{
    height: 150px;
    width: 150px;
-   border-radius: 50%;
+
    object-fit: cover;
    margin-bottom: 5px;
 }

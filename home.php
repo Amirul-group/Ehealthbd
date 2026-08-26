@@ -45,9 +45,15 @@ if(isset($_GET['logout'])){
          }
       ?>
       <h3><?php echo $fetch['name']; ?></h3>
+      <h3><?php echo $fetch['dob']; ?></h3>
+      <h3><?php echo $fetch['blood_group']; ?></h3>
+      <h3><?php echo $fetch['number']; ?></h3>
+      <h3><?php echo $fetch['nid_number']; ?></h3>
+<!--
       <a href="update_profile.php" class="btn">update profile</a>
       <a href="home.php?logout=<?php echo $user_id; ?>" class="delete-btn">logout</a>
       <p>new <a href="login.php">login</a> or <a href="register.php">register</a></p>
+-->
    </div>
 
 </div>
