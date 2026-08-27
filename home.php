@@ -32,7 +32,7 @@ if(isset($_GET['logout'])){
    
 <div class="container">
 <div class="head">
-   <img src="" alt="">
+   <img src="/images/Bangladesh-Govt-Logo.png" alt="Bangladesh Government Logo" class="head-img">
    <div class="head-mn">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার
       <div class="head-sn">Government of the People's Republic of Bangladesh</div>
    </div>
