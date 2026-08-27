@@ -31,7 +31,13 @@ if(isset($_GET['logout'])){
 <body>
    
 <div class="container">
-
+<div class="head">
+   <img src="" alt="">
+   <div class="head-mn">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার
+      <div class="head-sn">Government of the People's Republic of Bangladesh</div>
+   </div>
+   <div class="head-tdn"></div>
+</div>
    <div class="profile">
       <?php
          $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE id = '$user_id'") or die('query failed');
