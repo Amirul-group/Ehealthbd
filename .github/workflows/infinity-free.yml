@@ -25,6 +25,6 @@ jobs:
           server: ftpupload.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /ehealthbd.rf.gd/htdocs/  # For addon domains
+          server-dir: /htdocs/  # For addon domains
           timeout: 86400000
           log-level: standard
