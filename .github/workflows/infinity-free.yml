@@ -1,5 +1,5 @@
 
-name: Deploy to e-health.unaux.com
+name: Deploy to ehealthbd.rf.gd
 
 # Run manually or on push to the main branch
 on:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to e-health.unaux.com
+    name: Deploy to ehealthbd.rf.gd
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftpupload.net
-          username: ${{ ezyro_42765670 }}
-          password: ${{ 4de26797e3aa370 }}
-          server-dir: /e-health.unaux.com/htdocs/  # For addon domains
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /ehealthbd.rf.gd/htdocs/  # For addon domains
           timeout: 86400000
           log-level: standard
