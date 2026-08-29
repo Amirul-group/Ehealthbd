@@ -120,6 +120,8 @@ $qr_code_api = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" 
       .gov-logo {
          width: 38px !important;
          height: 38px !important;
+         background-color: #ffffff;
+         border-radius: 50%;
       }
 
       .gov-text {
