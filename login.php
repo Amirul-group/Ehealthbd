@@ -5,15 +5,22 @@ session_start();
 
 if(isset($_POST['submit'])){
 
-   $number = mysqli_real_escape_string($conn, $_POST['number']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+   $number = $_POST['number'];
+   $pass = md5($_POST['password']);
 
-   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE number = '$number' AND password = '$pass'") or die('query failed');
+   // PDO Prepared Statement ব্যবহার করা হয়েছে
+   $stmt = $conn->prepare("SELECT * FROM `user_form` WHERE number = :number AND password = :pass");
+   $stmt->execute([
+       ':number' => $number,
+       ':pass'   => $pass
+   ]);
 
-   if(mysqli_num_rows($select) > 0){
-      $row = mysqli_fetch_assoc($select);
-      $_SESSION['user_id'] = $row['id'];
+   $user = $stmt->fetch();
+
+   if($user){
+      $_SESSION['user_id'] = $user['id'];
       header('location:index.php');
+      exit();
    }else{
       $message[] = 'incorrect number or password!';
    }
@@ -26,7 +33,7 @@ if(isset($_POST['submit'])){
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="X-UA-Compatible" content="I=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>login</title>
 
@@ -42,15 +49,15 @@ if(isset($_POST['submit'])){
       <h3>login now</h3>
       <?php
       if(isset($message)){
-         foreach($message as $message){
-            echo '<div class="message">'.$message.'</div>';
+         foreach($message as $msg){
+            echo '<div class="message">'.$msg.'</div>';
          }
       }
       ?>
       <input type="number" name="number" placeholder="enter number" class="box" required>
       <input type="password" name="password" placeholder="enter password" class="box" required>
       <input type="submit" name="submit" value="login now" class="btn">
-      <p>don't have an account? <a href="register.php">regiser now</a></p>
+      <p>don't have an account? <a href="register.php">register now</a></p>
    </form>
 
 </div>
