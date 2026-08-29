@@ -11,7 +11,7 @@ date_default_timezone_set('Africa/Nairobi');
     // Database Username
     $db_username = 'if0_42773547';
     // Database Password
-    $db_password = '0zLQZhzeEsNDV';
+    $db_password = 'VAnrqXuKHxzS9Cu';
 
 try {
 
